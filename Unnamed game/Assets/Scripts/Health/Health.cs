@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        
 
         if (currentHealth > 0)
         {
@@ -35,7 +36,13 @@ public class Health : MonoBehaviour
     
     public void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.E))
         TakeDamage(1);
     }
+
+    public void AddHealth(float _value){
+        currentHealth = Mathf.Clamp(currentHealth + _value,0,startingHealth);
+    }
+
 }
