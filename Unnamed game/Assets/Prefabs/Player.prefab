@@ -156,6 +156,10 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
+  coyoteTime: 0.25
+  extraJumps: 1
+  WallJumpX: 100
+  WallJumpY: 600
 --- !u!95 &4561024422525467819
 Animator:
   serializedVersion: 5

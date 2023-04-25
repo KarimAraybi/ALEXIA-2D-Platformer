@@ -16,8 +16,20 @@ public class PlayerMovement : MonoBehaviour
     private GameObject playerObj = null;
     private float currentY;
     private BoxCollider2D boxCollider;
-    private float wallJumpCoolDown;
+    private float JumpCoolDown;
     private float horizontalInput;
+
+    [Header("Coyote time")]
+    [SerializeField] private float coyoteTime;
+    private float coyotecounter;
+
+    [Header("Multiple jumps")]
+    [SerializeField] private int extraJumps;
+    private int jumpCounter;
+
+    [Header("Multiple jumps")]
+    [SerializeField] private float WallJumpX;
+    [SerializeField] private int WallJumpY;
     
     
     private void Awake() {
@@ -45,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             currentY = playerObj.transform.position.y;
          }
 
-         if(wallJumpCoolDown>0.2f){
+         if(JumpCoolDown>0.2f){
             
 
             body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
@@ -53,18 +65,32 @@ public class PlayerMovement : MonoBehaviour
             if(onWall() && !isGrounded()){
                 body.gravityScale = 0;
                 body.velocity = Vector2.zero;
+                jumpCounter = extraJumps;
             }
             else{
                 body.gravityScale = 5;
+                body.velocity = new Vector2(horizontalInput*speed, body.velocity.y);
+                
+                if(isGrounded()){
+                    coyotecounter = coyoteTime;
+                    jumpCounter = extraJumps;
+
+                }
+                else{
+                    
+                    coyotecounter -= Time.deltaTime;
+                    
+                }
             }
 
-            if(Input.GetKey(KeyCode.Space)){
+            if(Input.GetKeyDown(KeyCode.Space)){
                 Jump();
             }
+            
 
          }
          else{
-            wallJumpCoolDown += Time.deltaTime;
+            JumpCoolDown += Time.deltaTime;
          }
 
          if(playerObj.transform.position.y > currentY + 1.9){
@@ -79,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
          }
          
         
-
+        
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
         anim.SetBool("fall", fall);
@@ -92,29 +118,42 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if(isGrounded()){
-            body.velocity = new Vector2(body.velocity.x, jumpPower);
-            anim.SetTrigger("jump");
+        if(coyotecounter<=0 && !onWall() && jumpCounter<=0) return;
+        
+        if(onWall()&&horizontalInput!=0 && Mathf.Sign(horizontalInput) != Mathf.Sign(transform.localScale.x)){
+            WallJump();
         }
-        else if(onWall() && !isGrounded()){
-            
-            if(horizontalInput == 0){
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x)*5, 0);
-                //transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y,transform.localScale.z);
-
+        else{
+            if(isGrounded()){
+                
+                body.velocity = new Vector2(body.velocity.x, jumpPower);
+                anim.SetTrigger("jump");
             }
             else{
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x)*3, 6);
+                if(coyotecounter>0){
+                    body.velocity = new Vector2(body.velocity.x, jumpPower);
+                }
+                else{
+                    if(jumpCounter>0){
+                        body.velocity = new Vector2(body.velocity.x, jumpPower);
+                        
+                        jumpCounter--;
+                    }
+                }
             }
 
-            wallJumpCoolDown = 0;
-
+            coyotecounter = 0;
         }
+        
+
+       
     }
  
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void WallJump()
     {
-        
+        anim.SetTrigger("jump");
+        body.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x)*WallJumpX,WallJumpY));
+        JumpCoolDown = 0;
     }
 
     private bool isGrounded(){
