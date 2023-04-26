@@ -177,6 +177,8 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
+  jumpsound1: {fileID: 8300000, guid: d56e3cd52b566894f8c29c5c7284c4a6, type: 3}
+  jumpsound2: {fileID: 8300000, guid: b1277995e0410144a944b647ec779020, type: 3}
   coyoteTime: 0.25
   extraJumps: 1
   WallJumpX: 100
@@ -195,6 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 3
   dead: 0
+  painSound: {fileID: 8300000, guid: a229270a7d98076478a2402defb42875, type: 3}
+  deadSound: {fileID: 8300000, guid: f594d89678e34864e8959582a6e91cff, type: 3}
   iFramesDuration: 1
   numberOfFlashes: 3
   components:
@@ -209,7 +213,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4561024422525467821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18da6b35edf3b654ab8eff0127055a51, type: 3}
+  m_Script: {fileID: 11500000, guid: 012aa687a4e355441bf7a4bdd6d853c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4561024422525467819}
@@ -218,5 +222,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8192
+  attackCooldown: 0.7
+  swordAttackSound: {fileID: 8300000, guid: 7af3f49c1a0f1d34ea11dd8b90718f36, type: 3}
   colliderDistance: 0.05
   boxCollider: {fileID: 4561024422525467822}

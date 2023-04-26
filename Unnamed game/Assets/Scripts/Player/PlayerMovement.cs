@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private AudioClip jumpsound1;
+    [SerializeField] private AudioClip jumpsound2;
     private Animator anim;
     private bool grounded;
     private bool fall;
@@ -128,10 +130,10 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         if(coyotecounter<=0 && !onWall() && jumpCounter<=0) return;
-        
+         
         if(onWall()&& horizontalInput!=0 && Mathf.Sign(horizontalInput) != Mathf.Sign(transform.localScale.x)){
             anim.SetTrigger("jump");
-            
+            SoundManager.instance.PlaySound(jumpsound1);
             WallJump();
         }
         else if(onWall() && (horizontalInput == 0 || Mathf.Sign(horizontalInput) == Mathf.Sign(transform.localScale.x))){
@@ -139,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         else{
+            SoundManager.instance.PlaySound(jumpsound1);
             if(isGrounded()){
                 anim.SetTrigger("jump");
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
@@ -146,11 +149,13 @@ public class PlayerMovement : MonoBehaviour
             }
             else{
                 anim.SetTrigger("jump");
+                
                 if(coyotecounter>0){
                     body.velocity = new Vector2(body.velocity.x, jumpPower);
                 }
                 else{
                     if(jumpCounter>0){
+                        SoundManager.instance.PlaySound(jumpsound2);
                         body.velocity = new Vector2(body.velocity.x, jumpPower);
                         
                         jumpCounter--;

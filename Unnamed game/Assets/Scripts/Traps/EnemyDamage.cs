@@ -8,6 +8,7 @@ public class EnemyDamage : MonoBehaviour
     private Animator anim;
     private bool hit;
     [SerializeField]private float activeTime;
+    [SerializeField] private AudioClip deploySound;
 
     
     void Awake()
@@ -32,6 +33,7 @@ public class EnemyDamage : MonoBehaviour
     private IEnumerator activateSpikeTrap(){
         hit = true;
         anim.SetBool("hit", hit);
+        SoundManager.instance.PlaySound(deploySound);
         yield return new WaitForSeconds(activeTime);
         hit = false;
         anim.SetBool("hit", hit);

@@ -8,6 +8,9 @@ public class Health : MonoBehaviour
     public float currentHealth { get; private set; }
     private Animator anim;
     public bool dead;
+    [SerializeField] private AudioClip painSound;
+    [SerializeField] private AudioClip deadSound;
+    
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
@@ -31,6 +34,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth > 0)
         {
+            SoundManager.instance.PlaySound(painSound);
             anim.SetTrigger("hurt");
             StartCoroutine(Invunerability());
 
@@ -40,6 +44,7 @@ public class Health : MonoBehaviour
             if (!dead)
             {
                 anim.SetTrigger("die");
+                SoundManager.instance.PlaySound(deadSound);
 
                 //Deactivate all attached component classes
                 foreach (Behaviour component in components)

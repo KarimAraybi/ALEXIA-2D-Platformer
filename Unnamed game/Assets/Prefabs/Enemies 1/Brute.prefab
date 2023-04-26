@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6990833829777826500}
   - component: {fileID: 821913595220678408}
   - component: {fileID: 821913595220678411}
+  - component: {fileID: 8362333161226089353}
   m_Layer: 0
   m_Name: Brute
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821913595220678647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.93, y: 4.46, z: 0}
+  m_LocalPosition: {x: 6.82, y: 4.35, z: 0}
   m_LocalScale: {x: -9, y: 9, z: 0.9154796}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -121,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 4
+  dead: 0
   iFramesDuration: 0
   numberOfFlashes: 0
   components:
@@ -138,8 +140,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 2
-  range: 1
+  range: 1.5
   damage: 2
+  Attacking: 0
   colliderDistance: 0.25
   boxCollider: {fileID: 821913595220678411}
   playerLayer:
@@ -158,16 +161,34 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3534984, y: -0.18642767}
+  m_Offset: {x: -0.0046426505, y: 0.003455788}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4, y: 0.93}
+    oldSize: {x: 0.43, y: 0.54}
     newSize: {x: 1.4, y: 0.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.43425906, y: 0.55102134}
+  m_Size: {x: 0.43720302, y: 0.55985314}
   m_EdgeRadius: 0
+--- !u!114 &8362333161226089353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821913595220678647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a42416dbc9a4c14284c0290474593de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftEdge: {fileID: 0}
+  rightEdge: {fileID: 0}
+  enemy: {fileID: 821913595220678410}
+  speed: 1
+  idleDuration: 3
+  anim: {fileID: 821913595220678644}

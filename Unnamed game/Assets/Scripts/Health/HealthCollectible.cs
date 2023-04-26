@@ -4,6 +4,7 @@ public class HealthCollectible : MonoBehaviour
 {
     [SerializeField] private float healthValue;
     [SerializeField] private Health playerHealth;
+    [SerializeField] private AudioClip pickupSound;
     private float hp;
 
 
@@ -18,9 +19,11 @@ public class HealthCollectible : MonoBehaviour
 
         
         if(col.tag == "Player"){
-            col.GetComponent<Health>().AddHealth(healthValue);
+            
             
             if(hp < 3){
+                SoundManager.instance.PlaySound(pickupSound);
+                col.GetComponent<Health>().AddHealth(healthValue);
                 gameObject.SetActive(false);
             }
             

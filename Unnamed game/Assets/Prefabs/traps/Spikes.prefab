@@ -147,3 +147,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   activeTime: 0.45
+  deploySound: {fileID: 8300000, guid: 44d899b093a04bc4fa97cd0b0931047d, type: 3}

@@ -122,7 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 2
   dead: 0
-  go: {fileID: 6032648369571956019}
+  painSound: {fileID: 8300000, guid: 098738b17111df349881a8cfbbfcd969, type: 3}
+  deadSound: {fileID: 8300000, guid: 576e940ed4715de4bbda1d1470666e40, type: 3}
   iFramesDuration: 1
   numberOfFlashes: 3
   components:
@@ -142,6 +143,7 @@ MonoBehaviour:
   attackCooldown: 2
   range: 2.5
   damage: 2
+  Attacking: 0
   colliderDistance: 0.1
   boxCollider: {fileID: 6032648369571956015}
   playerLayer:
