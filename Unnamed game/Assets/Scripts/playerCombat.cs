@@ -13,7 +13,7 @@ public class playerCombat : MonoBehaviour
     [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
 
-     private Health enemyHealth;
+    private Health enemyHealth;
     
     void Update()
     {
@@ -30,7 +30,10 @@ public class playerCombat : MonoBehaviour
             0, Vector2.left, 0, enemyLayer);
 
         if (hit.collider != null){
-            enemyHealth = hit.transform.GetComponent<Health>();
+            if (hit.transform.tag == "brute")
+                enemyHealth = hit.transform.GetComponentInChildren<Health>();
+            else
+                enemyHealth = hit.transform.GetComponent<Health>();
         }
 
         return hit.collider != null;

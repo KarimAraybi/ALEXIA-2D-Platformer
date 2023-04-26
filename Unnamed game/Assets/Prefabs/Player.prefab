@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4561024422525467816}
   - component: {fileID: 4561024422525467817}
   - component: {fileID: 4561024422525467822}
+  - component: {fileID: 4561024422525467819}
   - component: {fileID: 4561024422525467823}
   - component: {fileID: 4561024422525467820}
-  - component: {fileID: 4561024422525467819}
   - component: {fileID: 4561024422525467818}
   - component: {fileID: 1605694995889415997}
   m_Layer: 11
@@ -116,6 +116,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.10890048, y: 0.3238806}
   m_EdgeRadius: 0
+--- !u!95 &4561024422525467819
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561024422525467821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 312496b25d842af4a938e96c7d5aaee0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!50 &4561024422525467823
 Rigidbody2D:
   serializedVersion: 4
@@ -161,26 +181,6 @@ MonoBehaviour:
   extraJumps: 1
   WallJumpX: 100
   WallJumpY: 600
---- !u!95 &4561024422525467819
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4561024422525467821}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 312496b25d842af4a938e96c7d5aaee0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &4561024422525467818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +199,7 @@ MonoBehaviour:
   numberOfFlashes: 3
   components:
   - {fileID: 4561024422525467820}
+  - {fileID: 1605694995889415997}
 --- !u!114 &1605694995889415997
 MonoBehaviour:
   m_ObjectHideFlags: 0
