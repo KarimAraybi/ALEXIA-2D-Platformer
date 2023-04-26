@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
     private Animator anim;
-    private bool dead;
+    public bool dead;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
@@ -43,6 +43,7 @@ public class Health : MonoBehaviour
                 //Deactivate all attached component classes
                 foreach (Behaviour component in components)
                     component.enabled = false;
+                    spriteRend.color = Color.red;
 
                 dead = true;
             }

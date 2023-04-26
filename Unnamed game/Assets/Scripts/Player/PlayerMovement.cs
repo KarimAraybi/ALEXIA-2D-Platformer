@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool startFall;
     private GameObject playerObj = null;
     private float currentY;
+    private float maxY;
     private BoxCollider2D boxCollider;
     private float JumpCoolDown;
     private float horizontalInput;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();   
         playerObj = GameObject.Find("Player");
         boxCollider = GetComponent<BoxCollider2D>();    
+        maxY = playerObj.transform.position.y;
     }
     
     private void Update() {
@@ -50,11 +52,18 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalInput < -0.01f && !onWall())
             transform.localScale = new Vector3(-5, 5, 5);
         
-         
+         if(maxY>playerObj.transform.position.y){
+            maxY = playerObj.transform.position.y;
+         }
 
          if(isGrounded() || onWall()){
             fall = false;
             currentY = playerObj.transform.position.y;
+            maxY = playerObj.transform.position.y;
+         }
+         if(playerObj.transform.position.y < maxY){
+            startFall = true;
+            fall = true;
          }
 
          if(JumpCoolDown>0.2f){
@@ -105,12 +114,12 @@ public class PlayerMovement : MonoBehaviour
          }
          
         
-        
+        anim.SetBool("walled", onWall());
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
         anim.SetBool("fall", fall);
         anim.SetBool("startFall", startFall);
-        anim.SetBool("walled", onWall());
+        
        
     }
         
@@ -120,16 +129,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if(coyotecounter<=0 && !onWall() && jumpCounter<=0) return;
         
-        if(onWall()&&horizontalInput!=0 && Mathf.Sign(horizontalInput) != Mathf.Sign(transform.localScale.x)){
+        if(onWall()&& horizontalInput!=0 && Mathf.Sign(horizontalInput) != Mathf.Sign(transform.localScale.x)){
+            anim.SetTrigger("jump");
+            
             WallJump();
         }
+        else if(onWall() && (horizontalInput == 0 || Mathf.Sign(horizontalInput) == Mathf.Sign(transform.localScale.x))){
+            //do nothing
+        }
+        
         else{
             if(isGrounded()){
-                
-                body.velocity = new Vector2(body.velocity.x, jumpPower);
                 anim.SetTrigger("jump");
+                body.velocity = new Vector2(body.velocity.x, jumpPower);
+                
             }
             else{
+                anim.SetTrigger("jump");
                 if(coyotecounter>0){
                     body.velocity = new Vector2(body.velocity.x, jumpPower);
                 }
@@ -151,7 +167,6 @@ public class PlayerMovement : MonoBehaviour
  
     private void WallJump()
     {
-        anim.SetTrigger("jump");
         body.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x)*WallJumpX,WallJumpY));
         JumpCoolDown = 0;
     }

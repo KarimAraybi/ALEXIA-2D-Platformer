@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6032648369571956014}
   - component: {fileID: -4080362046278506650}
   - component: {fileID: 6032648369571956015}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 2
-  range: 2.5
+  range: 2
   damage: 2
   colliderDistance: 0.1
   boxCollider: {fileID: 6032648369571956015}
@@ -141,7 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 2
-  iFramesDuration: 1
+  dead: 0
+  iFramesDuration: 0.5
   numberOfFlashes: 3
   components:
   - {fileID: 6032648369571956014}

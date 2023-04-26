@@ -15946,17 +15946,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1605694995889415997, guid: 8de6a243f80285d47a90f910142c9ff4, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605694995889415997, guid: 8de6a243f80285d47a90f910142c9ff4, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
     - target: {fileID: 4561024422525467816, guid: 8de6a243f80285d47a90f910142c9ff4, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4561024422525467816, guid: 8de6a243f80285d47a90f910142c9ff4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.4
+      value: 4.28
       objectReference: {fileID: 0}
     - target: {fileID: 4561024422525467816, guid: 8de6a243f80285d47a90f910142c9ff4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.16
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: 4561024422525467816, guid: 8de6a243f80285d47a90f910142c9ff4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16007,6 +16015,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1998768591}
     m_Modifications:
+    - target: {fileID: -4080362046278506650, guid: 28e3ca964840b0448a557a796bb00cbf, type: 3}
+      propertyPath: dead
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6032648369571956014, guid: 28e3ca964840b0448a557a796bb00cbf, type: 3}
       propertyPath: range
       value: 2.5
