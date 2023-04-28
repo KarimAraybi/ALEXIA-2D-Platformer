@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
+
+    private UIManager uiManager;
     [Header ("Health")]
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
@@ -26,6 +28,7 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
+        uiManager = FindObjectOfType<UIManager>();
     }
     public void TakeDamage(float _damage)
     {
@@ -79,6 +82,12 @@ public class Health : MonoBehaviour
         gameObject.SetActive(false);
         this.transform.parent.gameObject.SetActive(false);
     }
+
+
+      private void Dead(){
+            uiManager.GameOver();
+      }
 }
+
 
     

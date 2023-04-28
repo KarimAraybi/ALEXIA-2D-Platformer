@@ -34,7 +34,7 @@ public class MeleeEnemy : MonoBehaviour
         //Attack only when player in sight?
         if (PlayerInSight())
         {
-            if (cooldownTimer >= attackCooldown)
+            if (cooldownTimer >= attackCooldown && playerHealth.currentHealth>0)
             {                  
                 cooldownTimer = 0;
                 anim.SetTrigger("meleeAttack");

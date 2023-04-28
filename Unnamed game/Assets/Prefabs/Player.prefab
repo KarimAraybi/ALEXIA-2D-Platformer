@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4561024422525467819}
-  attackRange: 5
+  attackRange: 3.7
   damage: 1
   enemyLayer:
     serializedVersion: 2

@@ -123,7 +123,7 @@ MonoBehaviour:
   startingHealth: 2
   dead: 0
   painSound: {fileID: 8300000, guid: 098738b17111df349881a8cfbbfcd969, type: 3}
-  deadSound: {fileID: 8300000, guid: 576e940ed4715de4bbda1d1470666e40, type: 3}
+  deadSound: {fileID: 8300000, guid: 098738b17111df349881a8cfbbfcd969, type: 3}
   iFramesDuration: 1
   numberOfFlashes: 3
   components:
