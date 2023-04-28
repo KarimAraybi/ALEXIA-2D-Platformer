@@ -66,6 +66,8 @@ public class UIManager : MonoBehaviour
         }
         else{
             Time.timeScale = 1;
+            pauseScreen.SetActive(false);
+
         }
     }
 }
