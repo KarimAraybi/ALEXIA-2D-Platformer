@@ -16,7 +16,7 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     private float cooldownTimer = Mathf.Infinity;
 
-    //References
+    [SerializeField] private AudioClip swordAttackSound;
     private Animator anim;
     private Health playerHealth;
     private EnemyPatrol enemyPatrol;
@@ -31,13 +31,14 @@ public class MeleeEnemy : MonoBehaviour
     {
         cooldownTimer += Time.deltaTime;
 
-        //Attack only when player in sight?
+       
         if (PlayerInSight())
         {
             if (cooldownTimer >= attackCooldown && playerHealth.currentHealth>0)
             {                  
                 cooldownTimer = 0;
                 anim.SetTrigger("meleeAttack");
+                SoundManager.instance.PlaySound(swordAttackSound);
                 Attacking = true;
             }
         }

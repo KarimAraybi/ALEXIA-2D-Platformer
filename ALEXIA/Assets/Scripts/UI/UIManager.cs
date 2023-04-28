@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
 
 
     public void PauseGame(bool status){
-        gameOverScreen.SetActive(true);
+        pauseScreen.SetActive(true);
 
         if(status){
             Time.timeScale = 0;

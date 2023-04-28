@@ -270,6 +270,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2048
+  swordAttackSound: {fileID: 8300000, guid: e4d10d717819c664ea5f1ea2476d62fb, type: 3}
 --- !u!114 &8980741686708301187
 MonoBehaviour:
   m_ObjectHideFlags: 0

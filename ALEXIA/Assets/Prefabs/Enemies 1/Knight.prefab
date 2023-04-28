@@ -124,8 +124,8 @@ MonoBehaviour:
   dead: 0
   painSound: {fileID: 8300000, guid: 098738b17111df349881a8cfbbfcd969, type: 3}
   deadSound: {fileID: 8300000, guid: 098738b17111df349881a8cfbbfcd969, type: 3}
-  iFramesDuration: 1
-  numberOfFlashes: 3
+  iFramesDuration: 0.5
+  numberOfFlashes: 1
   components:
   - {fileID: 6032648369571956014}
 --- !u!114 &6032648369571956014
@@ -149,6 +149,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2048
+  swordAttackSound: {fileID: 8300000, guid: a56cf94251dde18468295adc5b8b114a, type: 3}
 --- !u!61 &6032648369571956015
 BoxCollider2D:
   m_ObjectHideFlags: 0
